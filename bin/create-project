@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+const yargs = require("yargs");
+const crayon = require("../models/crayon/crayon");
+const project_manager = require("../components/create");
+
+yargs
+  .command(
+    "new [name]",
+    "Creates a new erre API workspace.",
+    (yargs) => {
+      yargs.positional("name", {
+        describe: "The name of the new erre API.",
+        type: "string",
+        default: "erre"
+      })
+    },
+    async argv => await project_manager.createProject(argv.name)
+  )
+  .option("version", {
+    description: "Show version number",
+    type: "boolean"
+  })
+  .option("help", {
+    description: "Show help",
+    type: "boolean"
+  })
+  .command('*','', () => { console.log(new crayon().red.bold("Error: You need to specify a command before moving on. Use '--help' to view the available commands.")) })
+  .help().argv

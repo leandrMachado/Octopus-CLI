@@ -1,0 +1,34 @@
+{
+    "red": {
+        "normal": "\u001b[38;2;255;70;70m",
+        "bold": "\u001b[1;38;2;255;70;70m"
+    },
+    "blue":{
+        "normal": "\u001b[38;5;117m",
+        "bold": "\u001b[1;38;5;117m"
+    },
+    "green": {
+        "normal": "\u001b[32m",
+        "bold": "\u001b[1;32m"
+    },
+    "yellow": {
+        "normal": "\u001b[33m",
+        "bold": "\u001b[1;33m"
+    },
+    "purple": {
+        "normal": "\u001b[35m",
+        "bold": "\u001b[1;35m"
+    },
+    "gray": {
+        "normal": "\u001b[90m",
+        "bold": "\u001b[1;90m"
+    },
+    "coral": {
+        "normal": "\u001b[38;5;202m",
+        "bold": "\u001b[1;38;5;202m"
+    },
+    "orange": {
+        "normal": "\u001b[38;5;208m",
+        "bold": "\u001b[1;38;5;208m"
+    }
+}
