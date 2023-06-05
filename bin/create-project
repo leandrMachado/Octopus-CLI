@@ -7,7 +7,7 @@ const project_manager = require("../components/create");
 yargs
   .command(
     "new [name]",
-    "Creates a new erre API workspace.",
+    "Creates a new erre API workspace with name 'erre'.",
     (yargs) => {
       yargs.positional("name", {
         describe: "The name of the new erre API.",
@@ -17,6 +17,22 @@ yargs
     },
     async argv => await project_manager.createProject(argv.name)
   )
+  .command(
+    "service [name]",
+    "Creates the new service in API workspace",
+    (yargs) => {
+      yargs.positional("name", {
+        describe: "The name of service in API",
+        type: "string"
+      })
+    },
+    async argv => {
+      if (!argv.name)
+        console.log(new crayon().red("Error: You need to enter a name to create the service"))
+      else
+        await project_manager.createService(argv.name)
+    }
+  )
   .option("version", {
     description: "Show version number",
     type: "boolean"
@@ -25,5 +41,5 @@ yargs
     description: "Show help",
     type: "boolean"
   })
-  .command('*','', () => { console.log(new crayon().red.bold("Error: You need to specify a command before moving on. Use '--help' to view the available commands.")) })
+  .command('*','', () => { console.log(new crayon().red("Error: You need to specify a command before moving on. Use '--help' to view the available commands.")) })
   .help().argv

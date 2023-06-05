@@ -20,7 +20,11 @@
   "author": "@Silmi",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.1.0",
+    "esm": "^3.2.25",
+    "execa": "^7.1.1",
     "listr": "^0.14.3",
+    "ncp": "^2.0.0",
     "yargs": "13.2"
   }
 }
