@@ -2,35 +2,104 @@
 
 const yargs = require("yargs");
 const crayon = require("../models/crayon/crayon");
-const project_manager = require("../components/create");
+const clone_manager = require("../components/clone_manager");
 
 yargs
   .command(
-    "new [name]",
-    "Creates a new erre API workspace with name 'erre'.",
+    ["new [name]", "n"],
+    "Creates a new oct API workspace with name 'oct'.",
     (yargs) => {
       yargs.positional("name", {
-        describe: "The name of the new erre API.",
+        describe: "The name of the new oct API.",
         type: "string",
-        default: "erre"
+        default: "oct",
+        alias: "n"
       })
     },
-    async argv => await project_manager.createProject(argv.name)
+    async argv => await clone_manager.createProject(argv.name)
   )
   .command(
-    "service [name]",
-    "Creates the new service in API workspace",
+    ["endpoint [name]", "e"],
+    "create the route, component and service",
     (yargs) => {
       yargs.positional("name", {
-        describe: "The name of service in API",
+        describe: "The name of new service route ans component",
         type: "string"
       })
     },
     async argv => {
       if (!argv.name)
-        console.log(new crayon().red("Error: You need to enter a name to create the service"))
+        console.log(new crayon().red("Error: You need to enter a name to create the path"))
       else
-        await project_manager.createService(argv.name)
+        await clone_manager.createEndpoint(argv.name)
+    }
+  )
+  .command(
+    ["router [name]", "r"],
+    "create new router file and exploit in app",
+    (yargs) => {
+      yargs.positional("name", {
+        describe: "The name of new router",
+        type: "string"
+      })
+    },
+    async argv => {
+      if (!argv.name)
+        console.log(new crayon().red("Error: You need to enter a name to create the path"))
+      else
+        await clone_manager.createRouter(argv.name);
+    }
+  )
+  .command(
+    ["service [name]", "s"],
+    "create new service file and exploit in app",
+    (yargs) => {
+      yargs.positional("name", {
+        describe: "The name of new service",
+        type: "string"
+      })
+    },
+    async argv => {
+      if (!argv.name)
+        console.log(new crayon().red("Error: You need to enter a name to create the path"))
+      else
+        await clone_manager.createService(argv.name);
+    }
+  )
+  .command(
+    ["controller [name]", "c"],
+    "create new controller file and exploit in app",
+    (yargs) => {
+      yargs.positional("name", {
+        describe: "The name of new controller",
+        type: "string"
+      })
+    },
+    async argv => {
+      if (!argv.name)
+        console.log(new crayon().red("Error: You need to enter a name to create the path"))
+      else
+        await clone_manager.createController(argv.name);
+    }
+  )
+  .command(
+    ["database [type] [name]", "db"],
+    "Create new database based in type of database",
+    (yargs) => {
+      yargs.positional("type", {
+        describe: "The type of new database",
+        type: "string"
+      })
+
+      yargs.positional("name", {
+        describe: "The name of new database",
+        type: "string"
+      })
+
+    },
+    async argv => {
+        // type == mongodb, knex => (pg, mysql2)
+      console.log(argv)
     }
   )
   .option("version", {
@@ -41,5 +110,5 @@ yargs
     description: "Show help",
     type: "boolean"
   })
-  .command('*','', () => { console.log(new crayon().red("Error: You need to specify a command before moving on. Use '--help' to view the available commands.")) })
+ // .command('*','', () => { console.log(new crayon().red("Error: You need to specify a command before moving on. Use '--help' to view the available commands.")) })
   .help().argv

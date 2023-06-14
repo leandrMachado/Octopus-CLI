@@ -1,11 +1,11 @@
 {
-  "name": "@silmi/erre-cli",
-  "version": "1.0.0",
+  "name": "@silmi/oct-cli",
+  "version": "2.0.0",
   "description": "lenadrMachado on Github",
   "main": "src/index.js",
   "bin": {
-    "@silmi/erre": "bin/create-project",
-    "erre": "bin/create-project"
+    "@silmi/oct": "bin/create-project",
+    "oct": "bin/create-project"
   },
   "publishConfig": {
     "access": "public"
@@ -15,7 +15,7 @@
   },
   "keywords": [
     "cli",
-    "erre"
+    "oct"
   ],
   "author": "@Silmi",
   "license": "ISC",

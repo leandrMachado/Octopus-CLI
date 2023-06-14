@@ -22,8 +22,7 @@ app.get("/", (req, res) => {
             </style>
         </head>
         <body>
-            🍍
-            <p>This is Érre API</p>
+            <p>This is octopus API 🐙</p>
         </body>
         </html>
     `)
