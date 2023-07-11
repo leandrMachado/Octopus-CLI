@@ -20,7 +20,7 @@ With the aim of improving the performance of developers wanders to build an APIs
 To create and launch a new app.
 
 ```bash
- $: erre new erre-project 
+ $: oct new erre-project 
  $: cd erre-project
  $: npm run start:dev
 ```
